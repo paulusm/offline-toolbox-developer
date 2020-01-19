@@ -1,0 +1,58 @@
+---
+pagination:
+    data: tools_es
+    size: 1
+    alias: tool
+permalink: "| tools/es/#{tool.id}/index.html"
+---
+
+extends /layout.pug
+
+block basetag
+    -var base = '../../../'
+
+block nav
+
+block content
+    article.tool-article
+        div.tool-section-header
+            h1 Herramienta: #{tool.title}
+
+        div.tool-thumbnail
+            img(src=`images/${tool.thumb}`, width="150")
+
+        div.tool-abstract
+            p #{tool.abstract}
+
+        div.tool-meta
+            table
+                each value, key in tool
+                        unless ['id','language','title','url','thumb','abstract'].includes(key)
+                            unless value === ""
+                                tr
+                                    td
+                                        span(class=`tool-metalabel ${key}`) #{key}:
+                                    td 
+                                        span(class=`tool-metavalue ${key}`)  #{value}
+
+        div.tool-resource
+            if (tool.url.indexOf(".pdf") > 0 && hasLocalVersion(tool.id) === "hasPDF")
+                p Copia sin conexión disponible      
+                a(href=`files/${tool.id}.pdf`)
+                    img(src="images/pdf.png", width="75")
+
+            if (tool.url.indexOf("youtube") > 0 && hasLocalVersion(tool.id) === "hasVideoMp4")
+                p Copia sin conexión disponible
+                video(src=`video/${tool.id}.mp4`, controls)
+
+            if (tool.url.indexOf("youtube") > 0 && hasLocalVersion(tool.id) === "hasVideoWebm")
+                p Copia sin conexión disponible
+                video(src=`video/${tool.id}.webm`, controls)
+
+            if (hasLocalVersion(tool.id) === "noLocal")
+                p Lo sentimos, no hay copia sin conexión disponible
+            p URL original: 
+            a(href=`${tool.url}`)
+                i #{tool.url}
+
+        

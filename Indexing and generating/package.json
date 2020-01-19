@@ -1,0 +1,27 @@
+{
+  "name": "sfm-toolbox",
+  "version": "1.0.0",
+  "description": "Offline FAO SFM Toolbox",
+  "main": "index.html",
+  "scripts": {
+    "serve": "DEBUG=Eleventy* npx @11ty/eleventy --serve"
+  },
+  "repository": {
+    "type": "git",
+    "url": "sfm-toolbox.git"
+  },
+  "keywords": [
+    "Forestry",
+    "Sustainable",
+    "Forest",
+    "Management"
+  ],
+  "author": "Paul Matthews",
+  "license": "ISC",
+  "devDependencies": {
+    "@11ty/eleventy": "^0.9.0"
+  },
+  "dependencies": {
+    "lunr": "^2.3.8"
+  }
+}

@@ -1,0 +1,17 @@
+extends /layout.pug
+
+block nav
+
+
+block content
+
+    h2 Modules
+    .modules
+        each md in modules_es
+            unless !md.thumb 
+                .module
+                    a(href=`modules/es/${md.slug}/index.html`)
+                        img(src=`images/${md.thumb}`)
+                        h3 #{md.title}
+        else    
+            h3 No data

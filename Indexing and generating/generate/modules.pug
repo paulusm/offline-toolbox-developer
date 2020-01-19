@@ -1,0 +1,78 @@
+---
+pagination:
+    data: modules_es
+    size: 1
+    alias: md
+permalink: "| modules/es/#{md.slug}/index.html"
+---
+
+extends /layout.pug
+
+block basetag
+            -var base = '../../../'
+
+block nav
+
+    script
+        | var pg = !{JSON.stringify(pagination.data)};
+        | console.log(pg)
+
+    //
+        nav.aria-labelledby="menu"
+            h2 Menu
+            ol
+                each pageEntry, key in pagination.pageLinks
+                    li
+                        a(href=`${pageEntry}`) #{pageEntry}
+
+block content
+
+    h2 Módulo: #{md.title}
+
+    
+
+    ul.module-sections  
+        li.module-section-title.on(data-tab-section="overview") Visión general
+            
+        each section in md.sections
+            unless ['Referencias adicionales','Credits'].includes(section.section)
+                li.module-section-title.off(data-tab-section=`${section.section}`) #{section.section}
+
+        li.module-section-title.off(data-tab-section="tools") Herramientas
+   
+        li.module-section-title.off(data-tab-section="cases") Casos
+        
+        each section in md.sections
+            unless ['Información básica', 'Información más detallada'].includes(section.section)
+                li.module-section-title.off(data-tab-section=`${section.section}`) #{section.section}
+
+
+    section.tab-content.on(id="overview")
+        h3 Vue d'ensemble
+        img(src=`images/${md.image}`)
+        article !{md.description}
+   
+    if md.sections   
+        each section in md.sections
+            section.tab-content.off(id=`${section.section}`)
+                h3 #{section.section}
+
+                article !{section.body}
+        else
+            h3 "No Sections Found"
+
+    section.tab-content.off(id="tools")
+        h3 Herramientas
+
+        ol
+            each tool in md.tools
+                li  
+                    a(href = `tools/es/${tool.id}/index.html`) #{tool.title}
+
+    section.tab-content.off(id="cases")
+        h3 Casos
+
+        ol
+            each case_ in md.cases
+                li  
+                    a(href = `cases/es/${case_.id}/index.html`) #{case_.title}

@@ -1,0 +1,22 @@
+extends /layout.pug
+
+block basetag
+    base(href="../")
+
+block scripts
+    script(src="scripts/lunr.js", language="javascript", defer="defer")
+    script(src="scripts/index_es.js", language="javascript", defer="defer")
+    script(src="scripts/tool-data.js", language="javascript", defer="defer")
+    script(src="scripts/case-data.js", language="javascript", defer="defer")
+    script(src="scripts/module-data.js", language="javascript", defer="defer")
+    script(src="scripts/search.js", language="javascript", defer="defer")
+
+block content
+
+        h2 Resultados de la búsqueda
+
+        div
+            ul#serp
+
+
+
