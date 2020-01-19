@@ -1,4 +1,4 @@
 !#/bin/bash
-wget -r -p -np -nc --no-use-server-timestamps --random-wait http://www.fao.org/sustainable-forest-management/toolbox/ 
+wget -r -p -np -m  --random-wait http://www.fao.org/sustainable-forest-management/toolbox/ 
 
-#-m = mirror
+#-m = mirror, nc = no clobber --no-use-server-timestamps

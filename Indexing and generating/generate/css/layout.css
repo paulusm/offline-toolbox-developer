@@ -1,0 +1,57 @@
+body{
+    border:0;
+    margin:0;
+    padding:0;
+}
+
+header{
+    width:100%;
+}
+
+main{
+    width: 90%;
+    margin: 25px 10px 0 25px;
+}
+
+.modules{
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.module{
+    width: 25%;
+}
+
+.module img{
+    border-radius: 3px;
+    display: block;
+    min-width: 75%;
+    width: 200px;
+    max-width: 200px;
+    margin:auto;
+}
+
+.module h3{
+    margin: 6px auto 8px auto;
+    overflow-wrap: break-word;
+    word-break: break-word;
+    overflow: hidden;
+    font-size: 1em;
+    text-align: center;
+    min-width: 75%;
+    max-width: 75%;
+}
+
+.module a{
+    color:#444;
+    text-decoration: none;
+}
+
+@media only screen and (max-width:950px){
+    .module{
+        width: 33.3%;
+    }
+}
